@@ -94,8 +94,10 @@ post {
             emailext(
     to: 'jenkins.frameworkdemo@gmail.com',
     subject: "Build Status: ${currentBuild.currentResult}",
-    body: "Please see the attached test report.",
-    attachmentsPattern: 'target/surefire-reports/emailable-report.html'
+   body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
+    attachmentsPattern: 'target/surefire-reports/emailable-report.html',
+    
+   
 )
         }
         failure {

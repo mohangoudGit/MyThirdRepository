@@ -82,6 +82,11 @@ pipeline
             }
         }
         
+        stage("Send Email To Stakeholder"){
+            steps{
+                echo("Send Email To Stakeholder")
+            }
+        }
       }
       
        

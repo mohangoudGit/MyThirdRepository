@@ -95,16 +95,10 @@ pipeline
         
       }
       
-      stage("Email Report To Stake holder"){
-            steps{
-                echo("Email Report To Stake holder")
        
-
-    }
-                
                 
             }
-        }
+        
         
       
       

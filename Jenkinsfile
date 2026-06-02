@@ -91,16 +91,19 @@ pipeline
        
 post {
         success {
-            mail to: 'jenkins.frameworkdemo@gmail.com',
-                 subject: "SUCCESS: ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
-                 body: "The build completed successfully.\n\nView details here: ${env.BUILD_URL}"
+            emailext(
+    to: 'jenkins.frameworkdemo@gmail.com',
+    subject: "Build Status: ${currentBuild.currentResult}",
+    body: "Please see the attached test report.",
+    attachmentsPattern: 'target/surefire-reports/emailable-report.html'
+)
         }
         failure {
             mail to: 'jenkins.frameworkdemo@gmail.com',
                  subject: "FAILURE: ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
                  body: "The build failed. Check logs immediately:\n\n${env.BUILD_URL}"
                  
-                 attachmentsPattern: 'target/surefire-reports/emailable-report.html'
+                 
         }
     }       
        

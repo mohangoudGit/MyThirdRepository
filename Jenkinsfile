@@ -51,7 +51,29 @@ pipeline
             }
         }
         
-        
+        stage('Email Reports') {
+           steps {
+                post {
+        always {
+            // First, publish results to Jenkins
+            step([$class: 'Publisher', reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'])
+            
+            // Second, email the HTML report to your team
+            emailext (
+                to: 'jenkins.frameworkdemo@gmail.com, jenkins.frameworkdemo@gmail.com',
+                subject: "TestNG Results: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
+                body: """<p>The build finished with status: <b>${currentBuild.currentResult}</b>.</p>
+                         <p>See attached TestNG report for comprehensive execution details.</p>
+                         <p>Console Logs: <a href='${env.BUILD_URL}console'>${env.BUILD_URL}console</a></p>""",
+                mimeType: 'text/html',
+                attachmentsPattern: '**/target/surefire-reports/emailable-report.html'
+            )
+        }
+    }
+
+                }
+            }
+        }
         
         
         stage("Deploy to Stage"){

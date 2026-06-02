@@ -51,6 +51,19 @@ pipeline
             }
         }
         
+         stage('Email Results To Stakeholders') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
+            }
+        }
        
         
         

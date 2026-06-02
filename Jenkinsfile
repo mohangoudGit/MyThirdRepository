@@ -97,13 +97,9 @@ pipeline
       
       stage("Email Report To Stake holder"){
             steps{
-                echo("deploy to PROD")
-            }
-        }
-        
-      }
-      
-      post {
+                echo("Email Report To Stake holder")
+                
+                 post {
         always {
             // First, publish results to Jenkins
             step([$class: 'Publisher', reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'])
@@ -121,6 +117,14 @@ pipeline
         }
 
     }
+                
+                
+            }
+        }
+        
+      }
+      
+     
   
     
     

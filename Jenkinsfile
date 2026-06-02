@@ -52,18 +52,7 @@ pipeline
         }
         
             
-            post {
-        success {
-            mail to: 'jenkins.frameworkdemo@gmail.com',
-                 subject: "SUCCESS: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
-                 body: "The build completed successfully. View details here: ${env.BUILD_URL}"
-        }
-        failure {
-            mail to: 'jenkins.frameworkdemo@gmail.com', // Comma-separated list
-                 subject: "FAILURE: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
-                 body: "Attention! The build failed. Check the logs immediately: ${env.BUILD_URL}"
-        }
-    }
+          
             
         
         

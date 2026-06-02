@@ -85,8 +85,25 @@ pipeline
       }
       
        
+
+
+       
+       
+post {
+        success {
+            mail to: 'team@example.com',
+                 subject: "SUCCESS: ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
+                 body: "The build completed successfully.\n\nView details here: ${env.BUILD_URL}"
+        }
+        failure {
+            mail to: 'devs@example.com',
+                 subject: "FAILURE: ${env.JOB_NAME} [Build #${env.BUILD_NUMBER}]",
+                 body: "The build failed. Check logs immediately:\n\n${env.BUILD_URL}"
+        }
+    }       
+       
                 
-            }
+}
         
         
       

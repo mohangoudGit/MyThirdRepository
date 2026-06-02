@@ -96,7 +96,7 @@ post {
     subject: "Build Status: ${currentBuild.currentResult}",
    body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
     attachmentsPattern: 'target/surefire-reports/emailable-report.html',
-    
+    echo("Email To Stakeholders")
    
 )
         }

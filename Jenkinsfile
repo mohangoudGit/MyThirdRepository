@@ -85,7 +85,7 @@ pipeline
         
       }
       
-       stage('Archive ChainTest Reports') {
+      
     post {
         always {
             // Archives the directory so it's permanently attached to the build
@@ -102,7 +102,6 @@ pipeline
             ])
         }
     }
-}
 
 
        

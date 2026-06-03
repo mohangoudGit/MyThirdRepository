@@ -84,7 +84,7 @@ pipeline
       
       
       
-      stage('Archive ChainTest Reports') {
+      
     post {
         always {
             // Corrected parameter name
@@ -101,7 +101,7 @@ pipeline
             ])
         }
     }
-}  
+
         
       }
       

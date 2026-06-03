@@ -85,7 +85,24 @@ pipeline
         
       }
       
-       
+       stage('Archive ChainTest Reports') {
+    post {
+        always {
+            // Archives the directory so it's permanently attached to the build
+            archiveArtifacts artifacts: '**/target/chaintest/**', allowEmptyResults: true
+            
+            // Optional: If you use the HTML Publisher Plugin to embed it directly
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target/chaintest',
+                reportFiles: 'index.html', // or your main simple report HTML file
+                reportName: 'ChainTest Report'
+            ])
+        }
+    }
+}
 
 
        

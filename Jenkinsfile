@@ -84,6 +84,21 @@ pipeline {
       
    
    }
+   
+   post {
+        always {
+            emailext (
+                subject: "Jenkins Build Report: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
+                body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
+                         
+                to: 'jenkins.frameworkdemo@gmail.com',
+                mimeType: 'text/html',
+                attachmentsPattern: 'target/surefire-reports/emailable-report.html' 
+            )
+        }
+    }
+    
+    
    }
    
    

@@ -81,27 +81,34 @@ pipeline
                 echo("deploy to PROD")
             }
         }
-        
-        
-      }
       
       
+      
+      stage('Archive ChainTest Reports') {
     post {
         always {
-            // Archives the directory so it's permanently attached to the build
-            archiveArtifacts artifacts: '**/target/chaintest/**', allowEmptyResults: true
+            // Corrected parameter name
+            archiveArtifacts artifacts: '**/target/chaintest/**', allowEmptyArchive: true
             
-            // Optional: If you use the HTML Publisher Plugin to embed it directly
+            // Optional: Publish directly to the Jenkins UI sidebar
             publishHTML(target: [
-                allowMissing: false,
+                allowMissing: true,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'target/chaintest',
-                reportFiles: 'index.html', // or your main simple report HTML file
+                reportFiles: 'index.html', // Verify your exact ChainTest file name here
                 reportName: 'ChainTest Report'
             ])
         }
     }
+}  
+        
+      }
+      
+      
+      
+      
+    
 
 
        

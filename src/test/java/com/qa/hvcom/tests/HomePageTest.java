@@ -50,7 +50,7 @@ public class HomePageTest extends BaseTest{
 		String Text=homepage.goToSolutions();
 		//	we are able to access this method
 		//System.out.println(Text);
-		Assert.assertEquals(Text,"Solutions");
+		Assert.assertEquals(Text,"Solitions");
 		//Assert.assertEquals(Text,AppConstants.PRODUCT_NAME);
 
 	}

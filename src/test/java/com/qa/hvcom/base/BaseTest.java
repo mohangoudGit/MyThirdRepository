@@ -1,14 +1,21 @@
 package com.qa.hvcom.base;
+import java.util.Properties;
+
+
 
 import java.io.IOException;
-import java.util.Properties;
+//import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.hvcom.factory.DriverFactory;
 import com.qa.hvcom.pages.HomePage;
+
+@Listeners(ChainTestListener.class)
 
 public class BaseTest {
 	

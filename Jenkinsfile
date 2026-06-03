@@ -104,10 +104,10 @@ post {
     ///SeleniumFrameWorkDemo/target/chaintest/Index.html
     //SeleniumFrameWorkDemo/target/chaintest/Index.html
     
-)
-        }
+    )
+      }
         failure {
-        emailext(
+    emailext(
         
         to: 'jenkins.frameworkdemo@gmail.com',
     subject: "Build Status: ${currentBuild.currentResult}",

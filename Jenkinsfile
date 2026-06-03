@@ -98,11 +98,13 @@ post {
   // body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
   // attachmentsPattern: 'target/surefire-reports/emailable-report.html',
     
-   body: '${FILE, path="target/chaintest/Index.html"}', 
+   body: '${FILE, path="target\\chaintest\\Index.html"}', 
    //attachmentsPattern: 'target/chaintest/Index.html',
     //attachmentsPattern: 'target/surefire-reports/emailable-report.html',
     ///SeleniumFrameWorkDemo/target/chaintest/Index.html
     //SeleniumFrameWorkDemo/target/chaintest/Index.html
+    
+   
     
     
     
@@ -116,7 +118,7 @@ post {
   // body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
    // attachmentsPattern: 'target/surefire-reports/emailable-report.html',
     
-   body: '${FILE, path="target/chaintest/Index.html"}', 
+   body: '${FILE, path="target\\chaintest\\Index.html"}', 
     //attachmentsPattern: 'target/surefire-reports/emailable-report.html',
     ///SeleniumFrameWorkDemo/target/chaintest/Index.html
         

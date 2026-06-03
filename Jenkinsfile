@@ -82,7 +82,7 @@ pipeline {
       
       
       
-      
+   stage("Post Build"){   
       post {
          success {
             emailext(
@@ -130,15 +130,15 @@ pipeline {
    
    
    
+   }
+   
+   
+   }
    
    
    
    
-   
-   
-   
-   
-}
+
 
 
 

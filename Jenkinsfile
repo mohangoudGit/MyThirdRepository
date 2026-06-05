@@ -85,16 +85,12 @@ pipeline {
    
    }
    
-   post {
+    post {
         always {
-            emailext (
-                subject: "Jenkins Build Report: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
-                body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
-
-                to: 'jenkins.frameworkdemo@gmail.com',
-                mimeType: 'text/html',
-                attachmentsPattern: 'target/surefire-reports/emailable-report.html' 
-            )
+            // Sends a standard notification using the Mailer plugin
+            mail to: 'team@example.com',
+                 subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                 body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
         }
     }
     

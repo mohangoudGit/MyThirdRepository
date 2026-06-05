@@ -96,7 +96,7 @@ pipeline {
             )
   }
     }
-    /SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html
+    
     
    }
    

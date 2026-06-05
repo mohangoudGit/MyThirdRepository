@@ -88,7 +88,7 @@ pipeline {
     post {
         always {
             // Sends a standard notification using the Mailer plugin
-            mail to: 'team@example.com',
+            mail to: 'jenkins.frameworkdemo@gmail.com',
                  subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
                  body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
         }

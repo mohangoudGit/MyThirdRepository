@@ -90,7 +90,11 @@ pipeline {
             emailext (
                 subject: "Jenkins Build Report: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
                 body: '${FILE, path="target/surefire-reports/emailable-report.html"}', 
+<<<<<<< HEAD
                    //       body: '${FILE, path="target/surefire-reports/ChainIndex.html"}',
+=======
+                  
+>>>>>>> 1b84d45 (re-assigning rep3)
                 to: 'jenkins.frameworkdemo@gmail.com',
                 mimeType: 'text/html',
                 attachmentsPattern: 'target/surefire-reports/emailable-report.html' 

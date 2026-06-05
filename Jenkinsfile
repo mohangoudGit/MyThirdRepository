@@ -86,7 +86,7 @@ pipeline {
    }
    
     post {
-        always {
+        success { 
         emailext (
                 to: 'jenkins.frameworkdemo@gmail.com',
                 subject: "Build #${env.BUILD_NUMBER} Artifacts",

@@ -88,15 +88,15 @@ pipeline {
     post {
         always {
         emailext (
-    to: 'jenkins.frameworkdemo@gmail.com',
-    mimeType: 'text/html',
-    subject: "Test Report for Build #${env.BUILD_NUMBER}",
-    // This reads the workspace file and places its raw contents directly into the email body
-    body: '${FILE, path="target/surefire-reports/index.html"}'
-)
+                to: 'jenkins.frameworkdemo@gmail.com',
+                subject: "Build #${env.BUILD_NUMBER} Artifacts",
+                body: "Please find the requested build artifacts attached to this email.",
+                // Finds all PDFs in target/outputs and a specific log file at the root
+                attachmentsPattern: 'target/surefire-reports/emailable-report.html, index.html'
+            )
   }
     }
-    
+    /SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html
     
    }
    

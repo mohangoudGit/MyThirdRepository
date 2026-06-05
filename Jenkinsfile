@@ -92,7 +92,7 @@ pipeline {
                 subject: "Build #${env.BUILD_NUMBER} Artifacts",
                 body: "Please find the requested build artifacts attached to this email.",
                 // Finds all PDFs in target/outputs and a specific log file at the root
-                attachmentsPattern: 'target/surefire-reports/emailable-report.html, index.html'
+              //  attachmentsPattern: 'target/surefire-reports/emailable-report.html, index.html'
             )
   }
     }

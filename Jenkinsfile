@@ -100,13 +100,17 @@ pipeline {
    post {
         always {
             emailext (
-                subject: "Build ${env.BUILD_NUMBER} Results",
-                body: "Please find the requested reports attached.",
-                to: 'jenkins.frameworkdemo@gmail.com',
-                // You can target a single file, multiple files, or wildcards
-              //  attachmentsPattern: 'test-report.txt, error-logs.log',
-                mimeType: 'text/html'
-            )
+    subject: "Build ${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+    body: """<h3>Build Status: ${currentBuild.currentResult}</h3>
+             <p>Project: ${env.JOB_NAME}</p>
+             <p>Check logs <a href='${env.BUILD_URL}'>here</a>.</p>""",
+    to: 'jenkins.frameworkdemo@gmail.com',
+    from: 'jenkins.frameworkdemo@gmail.com',
+    replyTo: 'no-reply@example.com',
+    mimeType: 'text/html',
+    attachLog: false, // Set to true to automatically attach the console log
+    attachmentsPattern: '' // Path to files if you want to attach them
+)
         }
     }
     

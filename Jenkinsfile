@@ -94,6 +94,14 @@ pipeline {
         //}
 
   //} 
+  
+  stage('Notify') {
+    steps {
+        emailext to: 'jenkins.frameworkdemo@gmail.com',
+                 subject: "Status: ${currentBuild.currentResult}",
+                 body: "The build completed with status ${currentBuild.currentResult}"
+    }
+}
     
    post {
         always {

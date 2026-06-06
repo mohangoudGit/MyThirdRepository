@@ -81,6 +81,13 @@ pipeline {
       }
       
       
+      stage('Notify') {
+    steps {
+        emailext to: 'jenkins.frameworkdemo@gmail.com',
+                 subject: "Status: ${currentBuild.currentResult}",
+                 body: "The build completed with status ${currentBuild.currentResult}"
+    }
+}
       
    
    }
@@ -96,23 +103,8 @@ pipeline {
   //} 
   
  
+  
     
-   post {
-        always {
-            emailext (
-    subject: "Build ${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
-    body: """<h3>Build Status: ${currentBuild.currentResult}</h3>
-             <p>Project: ${env.JOB_NAME}</p>
-             <p>Check logs <a href='${env.BUILD_URL}'>here</a>.</p>""",
-    to: 'jenkins.frameworkdemo@gmail.com',
-    from: 'jenkins.frameworkdemo@gmail.com',
-    replyTo: 'no-reply@example.com',
-    mimeType: 'text/html',
-    attachLog: false, // Set to true to automatically attach the console log
-    attachmentsPattern: '' // Path to files if you want to attach them
-)
-        }
-    }
     
    }
    

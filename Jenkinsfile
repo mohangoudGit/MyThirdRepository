@@ -85,17 +85,28 @@ pipeline {
    
    }
    
-    post {
-        success { 
+  //  post {
+    //    success { 
         
-       mail to: 'jenkins.frameworkdemo@gmail.com',
-                 subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-                 body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
-        }
+      // mail to: 'jenkins.frameworkdemo@gmail.com',
+        //         subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+          //       body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
+        //}
 
-  }
+  //} 
     
-   
+   post {
+        always {
+            emailext (
+                subject: "Build ${env.BUILD_NUMBER} Results",
+                body: "Please find the requested reports attached.",
+                to: 'jenkins.frameworkdemo@gmail.com',
+                // You can target a single file, multiple files, or wildcards
+                attachmentsPattern: 'test-report.txt, error-logs.log',
+                mimeType: 'text/html'
+            )
+        }
+    }
     
    }
    

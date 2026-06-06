@@ -95,13 +95,7 @@ pipeline {
 
   //} 
   
-  stage('Notify') {
-    steps {
-        emailext to: 'jenkins.frameworkdemo@gmail.com',
-                 subject: "Status: ${currentBuild.currentResult}",
-                 body: "The build completed with status ${currentBuild.currentResult}"
-    }
-}
+ 
     
    post {
         always {
@@ -110,7 +104,7 @@ pipeline {
                 body: "Please find the requested reports attached.",
                 to: 'jenkins.frameworkdemo@gmail.com',
                 // You can target a single file, multiple files, or wildcards
-                attachmentsPattern: 'test-report.txt, error-logs.log',
+              //  attachmentsPattern: 'test-report.txt, error-logs.log',
                 mimeType: 'text/html'
             )
         }

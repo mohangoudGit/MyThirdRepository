@@ -27,7 +27,7 @@ pipeline {
          steps {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                git 'https://github.com/mohangoudGit/MyThirdRepository.git'
-               bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resource/HomePageTest.xml"
+               bat "mvn clean install -Dsurefire.suiteXmlFiles=src/test/resource/HomePageTest.xml"
                
                
             }
@@ -60,15 +60,15 @@ pipeline {
          }
       }
       
-      stage('Sanity Automation Test') {
-         steps {
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-               git 'https://github.com/mohangoudGit/MyThirdRepository.git'
-               bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resource/HomePageTest.xml"
+   //   stage('Sanity Automation Test') {
+     //    steps {
+       //     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+         //      git 'https://github.com/mohangoudGit/MyThirdRepository.git'
+           //    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resource/HomePageTest.xml"
                
-            }
-         }
-      }
+           // }
+        // }
+     // }
       
       
       
@@ -94,6 +94,7 @@ pipeline {
     // This reads the workspace file and places its raw contents directly into the email body
     body: '${FILE, path="target/surefire-reports/emailable-report.html"}'
 )
+// /SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html
 
   }
     }

@@ -87,11 +87,12 @@ pipeline {
    
     post {
         success { 
-        emailext (
-    to: "jenkins.frameworkdemo@gmail.com",
-    mimeType: 'text/html',
-    subject: "Test Report for Build #${env.BUILD_NUMBER}",
-     body: '${FILE, path="target/surefire-reports/emailable-report.html"}'
+        
+        emailext(
+  subject: "Build log",
+  body: "See attached log.",
+  to: "jenkins.frameworkdemo@gmail.com",
+  attachLog: true
 )
 
 

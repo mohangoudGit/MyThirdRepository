@@ -81,26 +81,20 @@ pipeline {
       }
       
       
-      stage('Notify') {
-    steps {
-        emailext to: 'jenkins.frameworkdemo@gmail.com',
-                 subject: "Status: ${currentBuild.currentResult}",
-                 body: "The build completed with status ${currentBuild.currentResult}"
-    }
-}
+     
       
    
    }
    
-  //  post {
-    //    success { 
+    post {
+        success { 
         
-      // mail to: 'jenkins.frameworkdemo@gmail.com',
-        //         subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-          //       body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
-        //}
+       mail to: 'jenkins.frameworkdemo@gmail.com',
+                 subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                 body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
+        }
 
-  //} 
+  } 
   
  
   

@@ -2,6 +2,7 @@ package com.qa.hvcom.pages;
 
 import java.sql.Driver;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -9,11 +10,29 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import com.google.common.io.Files;
+
 import org.openqa.selenium.NoSuchElementException;
 
 import java.util.List;
 
 import io.qameta.allure.Step;
+import jakarta.mail.Session;
+
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
+
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 public class HomePage {
 	
@@ -30,7 +49,7 @@ public class HomePage {
 	private final By PartnerEchoSys=By.xpath("(//a[starts-with(@id,'our-partner-ecosystem')])[2]");
 	private final By SupportPortalLink=By.xpath("//div[starts-with(@id,'customer-success-support')]/section/p/span[1]/a");
 	private final By BlockStorageLink=By.xpath("//div[starts-with(@id,'storage-platforms')]/section/p/span[1]/a");
-		
+	String XLSXfilePath;		
 	
 	//div[starts-with(@id,'customer-success-support')]/section/p/span[1]/a  -- Support Portal
 	
@@ -122,6 +141,7 @@ public String goToPartners() throws InterruptedException {
 		}
 
 
+
 public  int getFrameIndexOfElement(WebDriver driver, By targetElementLocator) {
     // Step 1: Return focus to the main top-level page
     driver.switchTo().defaultContent();
@@ -153,4 +173,194 @@ public  int getFrameIndexOfElement(WebDriver driver, By targetElementLocator) {
     return -1; 
 }
 
+public  int SendReportInEmail() {
+	
+	
+	  // 1. Define sender and recipient information
+    final String senderEmail = "jenkins.frameworkdemo@gmail.com";
+    final String appPassword = "czpjkthgdnfrwuah"; // Use an App Password, NOT your master password
+    String recipientEmail = "jenkins.frameworkdemo@gmail.com";
+
+    System.out.println(senderEmail);
+    System.out.println(appPassword);
+    System.out.println(recipientEmail);
+    
+
+    // 2. Set up SMTP server properties
+    Properties properties = new Properties();
+    properties.put("mail.smtp.auth", "true");
+    properties.put("mail.smtp.starttls.enable", "true");
+    properties.put("mail.smtp.ssl.enable","true");
+    properties.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP server host
+    properties.put("mail.smtp.port", "465");           // TLS Port
+
+    // 3. Create a mail session with authentication
+    Session session = Session.getInstance(properties, new Authenticator() {
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(senderEmail, appPassword);
+        }
+    });
+
+    
+    try {
+        // 4. Create and compose the MimeMessage object
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(senderEmail));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+        message.setSubject("Testing Java Mail API");
+        message.setText("Hello! This email was sent successfully using Java code.");
+        
+        
+        
+        // 5. Transmit the email message
+        Transport.send(message);
+        System.out.println("Email sent successfully!");
+        
+        // added new code 
+        
+     // 4. Create the text body part
+        MimeBodyPart textPart = new MimeBodyPart();
+        textPart.setText("Please find the requested file attached to this email.");
+
+        // 5. Create the attachment body part
+        MimeBodyPart attachmentPart = new MimeBodyPart();
+        String filePath = "C:/Users/mgoud/MohanWorkData/Temp/Jira_dasboard.txt"; // Change to your local file path
+        File file = new File(filePath);
+        try {
+			attachmentPart.attachFile(file);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+    } catch (MessagingException e) {
+        e.printStackTrace();
+        System.err.println("Failed to send email due to an error: " + e.getMessage());
+    }
+    
+	return 0;
+	
+	
+	
 }
+
+
+@SuppressWarnings("static-access")
+public  int SendReportInEmail2() {
+	
+	
+	
+	
+	
+	  // 1. Define sender and recipient information
+    final String senderEmail = "jenkins.frameworkdemo@gmail.com";
+    final String appPassword = "czpjkthgdnfrwuah"; // Use an App Password, NOT your master password
+    String recipientEmail = "jenkins.frameworkdemo@gmail.com";
+
+    System.out.println(senderEmail);
+    System.out.println(appPassword);
+    System.out.println(recipientEmail);
+    
+
+    // 2. Set up SMTP server properties
+    Properties props = new Properties();
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.ssl.enable","true");
+    props.put("mail.smtp.host", "smtp.gmail.com"); // Replace with your SMTP server host
+    props.put("mail.smtp.port", "465");           // TLS Port
+
+	//+++++++++++++++++++++++++++++++++++++++++++
+	
+	
+
+    // 2. Sender credentials
+    final String username = "jenkins.frameworkdemo@gmail.com";
+    // Note: For Gmail, use a 16-character 'App Password', NOT your actual account password
+    final String password = "czpjkthgdnfrwuah"; 
+
+    // 3. Create the session with authentication
+    Session session = Session.getInstance(props, new Authenticator() {
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+        }
+    });
+
+    try {
+        // 4. Create a default MimeMessage object
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("jenkins.frameworkdemo@gmail.com"));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jenkins.frameworkdemo@gmail.com"));
+        message.setSubject("Project Report and Invoices");
+
+        // 5. Create the text body part
+        MimeBodyPart textBodyPart = new MimeBodyPart();
+        textBodyPart.setText("Hello, please find the requested documents attached to this email.");
+
+        // 5. Create the text body part
+        textBodyPart = new MimeBodyPart();
+        textBodyPart.setText("Hello, please find the requested documents attached to this email.");
+
+        // 6. Create the attachment body part
+        MimeBodyPart attachmentBodyPart = new MimeBodyPart();
+    //   String filePath = "C:/Users/mgoud/MohanWorkData/SeleniumWorkSpace/SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html";
+      
+       
+       XLSXfilePath=System.getProperty("user.dir")+"\\target\\surefire-reports\\emailable-report.html";
+          // Provide your local file path
+        File file = new File(XLSXfilePath);
+    //    C:\Users\mgoud\MohanWorkData\SeleniumWorkSpace\SeleniumFrameWorkDemo\SeleniumFrameWorkDemo\target\surefire-reports\emailable-report.html 
+
+        System.out.println("FilePath="+XLSXfilePath);
+        
+     // Attach the file directly using the updated API
+        attachmentBodyPart.attachFile(file);
+        
+        // 7. Combine both parts into a Multipart object
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(textBodyPart);
+        multipart.addBodyPart(attachmentBodyPart);
+        
+        
+     
+		
+        // Attach the file directly using the updated API
+        attachmentBodyPart.attachFile(file);
+        attachmentBodyPart.setDisposition(attachmentBodyPart.INLINE);
+        
+        //SeleniumFrameWorkDemo/target/chaintest/Index.html
+        
+        
+
+        
+        // 7. Combine both parts into a Multipart object
+        multipart = new MimeMultipart();
+        multipart.addBodyPart(textBodyPart);
+        multipart.addBodyPart(attachmentBodyPart);
+
+        // 8. Set the multipart content as the email body
+        message.setContent(multipart);
+
+        // 9. Send the message
+        System.out.println("Sending email with attachment...");
+        Transport.send(message);
+        System.out.println("Email sent successfully!");
+
+    } catch (MessagingException | IOException e) {
+        e.printStackTrace();
+    }
+
+
+	return 0;
+	
+	
+	
+	
+	
+	
+}
+}
+

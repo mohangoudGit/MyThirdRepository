@@ -88,13 +88,12 @@ pipeline {
     post {
         success { 
         emailext (
-    to: 'jenkins.frameworkdemo@gmail.com',
+    to: "jenkins.frameworkdemo@gmail.com",
     mimeType: 'text/html',
     subject: "Test Report for Build #${env.BUILD_NUMBER}",
-    // This reads the workspace file and places its raw contents directly into the email body
-    body: '${FILE, path="target/surefire-reports/emailable-report.html"}'
+     body: '${FILE, path="target/surefire-reports/emailable-report.html"}'
 )
-// /SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html
+
 
   }
     }

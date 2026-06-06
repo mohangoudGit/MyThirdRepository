@@ -45,6 +45,9 @@ public class BaseTest {
 	@AfterTest  // run this code after every test
 	public void tearDown() {
 		
+		
+		System.out.println("Sending Email");
+		
 	//	driver.quit();
 	}
 	

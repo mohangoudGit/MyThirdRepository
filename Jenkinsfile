@@ -57,6 +57,7 @@ pipeline {
       stage("Deploy to Stage") {
          steps {
             echo("deploy to Stage")
+            echo("The current workspace is: ${env.WORKSPACE}")
          }
       }
       
@@ -70,7 +71,7 @@ pipeline {
         // }
      // }
       
-      
+     
       
       
       

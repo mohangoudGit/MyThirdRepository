@@ -94,15 +94,12 @@ pipeline {
                //  body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
             
              emailext (
-                to: 'jenkins.frameworkdemo@gmail.com, jenkins.frameworkdemo@gmail.com',
-                replyTo: 'no-reply@example.com',
-                subject: "SUCCESS: Job '${env.JOB_NAME}' [Build #${env.BUILD_NUMBER}]",
-                body: """<p>The build completed successfully.</p>
-                         <p><strong>Job:</strong> ${env.JOB_NAME}</p>
-                         <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
-                         <p>Check the console output <a href="${env.BUILD_URL}">here</a>.</p>""",
-                mimeType: 'text/html',
-                recipientProviders: [[$class: 'RequesterRecipientProvider']]
+              
+            to: 'jenkins.frameworkdemo@gmail.com',
+            subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
+            
+        
             )
             
         }

@@ -46,8 +46,8 @@ public class BaseTest {
 	public void tearDown() {
 		
 		
-		System.out.println("Sending Email");
-		homepage.SendReportInEmail2();
+	//	System.out.println("Sending Email");
+	//	homepage.SendReportInEmail2();
 		
 		
 		//___________________________________________________________________________________-

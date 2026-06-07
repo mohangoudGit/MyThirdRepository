@@ -81,17 +81,11 @@ pipeline {
          }
       }
       
-    stage('Run Java Class') {
-            steps {
-                // Ensure you are in the directory containing your compiled target files or JAR
-                bat 'java -cp target/classes com.example.MainClass'
-                src/test/java/com/qa/hvcom/tests/HomePageTest.java                
-                /SeleniumFrameWorkDemo/src/test/java/com/qa/hvcom/tests/HomePageTest.java
-            }
-        }   
+     
      
       
   } 
+    
     post {
         always {
             // Send email when the pipeline finishes, no matter if it passed or failed

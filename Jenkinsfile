@@ -91,7 +91,7 @@ pipeline {
         }   
      
       
-   
+  } 
     post {
         always {
             // Send email when the pipeline finishes, no matter if it passed or failed
@@ -101,7 +101,7 @@ pipeline {
             
         }
    
-   }
+   
    
    
   

@@ -91,17 +91,18 @@ public class HomePageTest extends BaseTest{
 
 	}
 	
-	public void SentGmail() throws InterruptedException {
-
-
-		Thread.sleep(5000);
-		int Text=homepage.SendReportInEmail2();
-		System.out.println(Text);
-		
-		
-		
-		
-
-	}
+	/*
+	 * public void SentGmail() throws InterruptedException {
+	 * 
+	 * 
+	 * Thread.sleep(5000); int Text=homepage.SendReportInEmail2();
+	 * System.out.println(Text);
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 
 }

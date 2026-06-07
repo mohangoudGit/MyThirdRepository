@@ -255,9 +255,9 @@ public  int SendReportInEmail2() {
 	
 	
 	  // 1. Define sender and recipient information
-    final String senderEmail = "jenkins.demo@yahoo.com";
-    final String appPassword = "dpbjlufuetlepyfz"; // Use an App Password, NOT your master password
-    String recipientEmail = "jenkins.demo@yahoo.com";
+    final String senderEmail = "jenkins.frameworkdemo@gmail.com";
+    final String appPassword = "wxirehjhfyugpibr"; // Use an App Password, NOT your master password
+    String recipientEmail = "jenkins.frameworkdemo@gmail.com";
 
     System.out.println(senderEmail);
     System.out.println(appPassword);
@@ -269,7 +269,7 @@ public  int SendReportInEmail2() {
      props.put("mail.smtp.auth", "true");
    // props.put("mail.smtp.starttls.enable", "true");
     props.put("mail.smtp.ssl.enable","true");
-    props.put("mail.smtp.host","smtp.mail.yahoo.com"); // Replace with your SMTP server host
+    props.put("mail.smtp.host","smtp.gmail.com"); // Replace with your SMTP server host
     props.put("mail.smtp.port", "465");           // TLS Port
 
 	//+++++++++++++++++++++++++++++++++++++++++++
@@ -277,9 +277,9 @@ public  int SendReportInEmail2() {
 	
 
     // 2. Sender credentials
-    final String username = "jenkins.demo@yahoo.com";
+    final String username = "jenkins.frameworkdemo@gmail.com";
     // Note: For Gmail, use a 16-character 'App Password', NOT your actual account password
-    final String password = "dpbjlufuetlepyfz"; 
+    final String password = "wxirehjhfyugpibr"; 
 
     // 3. Create the session with authentication
     Session session = Session.getInstance(props, new Authenticator() {
@@ -292,7 +292,7 @@ public  int SendReportInEmail2() {
     try {
         // 4. Create a default MimeMessage object
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("jekinsauto@gmail.com"));
+        message.setFrom(new InternetAddress("jenkins.frameworkdemo@gmail.com"));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jenkins.frameworkdemo@gmail.com"));
         message.setSubject("Project Report and Invoices");
 

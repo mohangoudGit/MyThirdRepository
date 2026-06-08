@@ -100,9 +100,9 @@ pipeline {
             
              emailext (
               
-         //   to: 'jenkins.frameworkdemo@gmail.com',
-          //  subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-           // body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
+           to: 'jenkins.frameworkdemo@gmail.com',
+            subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
             
         
             )

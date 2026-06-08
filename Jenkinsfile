@@ -1,3 +1,6 @@
+import jakarta.mail.*
+import jakarta.mail.internet.*
+
 pipeline {
    agent any
    
@@ -91,9 +94,7 @@ pipeline {
         script {
             // Groovy mail code here
             
-            import jakarta.mail.*
-import jakarta.mail.internet.*
-
+            
 def props = new Properties()
 props.put("mail.smtp.host", "smtp.gmail.com")
 props.put("mail.smtp.port", "587")

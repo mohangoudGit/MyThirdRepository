@@ -102,8 +102,8 @@ public void SentGmail() throws InterruptedException, CoreException {
 		
 	//homepage.refreshEclipeProject();
 	  
-	  Thread.sleep(5000); int Text=homepage.SendReportInEmail2();
-	  System.out.println(Text);
+	//  Thread.sleep(5000); int Text=homepage.SendReportInEmail2();
+	  //System.out.println(Text);
 	  
 	  
 	  

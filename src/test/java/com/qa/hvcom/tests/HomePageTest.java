@@ -1,6 +1,9 @@
 package com.qa.hvcom.tests;
 
+
+import org.eclipse.core.runtime.CoreException;
 import org.testng.Assert;
+
 import org.testng.annotations.Test;
 
 import com.qa.hvcom.base.BaseTest;
@@ -13,6 +16,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
+
+
 
 @Epic("EPIC")  // you can just give the reference of the JIR EPIC
 @Story("Story-100")// You can aslo give your reference to JIRA story
@@ -91,18 +96,20 @@ public class HomePageTest extends BaseTest{
 
 	}
 	
-	/*
-	 * public void SentGmail() throws InterruptedException {
-	 * 
-	 * 
-	 * Thread.sleep(5000); int Text=homepage.SendReportInEmail2();
-	 * System.out.println(Text);
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	@Test(priority=5)
+public void SentGmail() throws InterruptedException, CoreException {
+	  
+		
+	//homepage.refreshEclipeProject();
+	  
+	  Thread.sleep(5000); int Text=homepage.SendReportInEmail2();
+	  System.out.println(Text);
+	  
+	  
+	  
+	  
+	  
+	  }
+	 
 
 }

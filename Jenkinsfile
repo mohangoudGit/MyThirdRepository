@@ -35,6 +35,8 @@ pipeline {
       }
       
       
+      
+      
       stage('Publish Allure Reports') {
          steps {
             script {
@@ -58,6 +60,13 @@ pipeline {
          steps {
             echo("deploy to Stage")
             echo("The current workspace is: ${env.WORKSPACE}")
+            
+	def filePath = "large_output.txt"
+	def logMessage = "System entry logged at " + new Date().toString()
+	new File(filePath).withWriter('UTF-8') { writer ->writer.writeLine(logMessage)
+	
+	
+	}
          }
       }
       
@@ -89,18 +98,18 @@ pipeline {
     post {
         always {
             // Send email when the pipeline finishes, no matter if it passed or failed
-           //  mail to: 'jenkins.frameworkdemo@gmail.com',
-             //    subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-               //  body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
+             mail to: 'jenkins.frameworkdemo@gmail.com',
+                 subject: "Status of Job: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                 body: "The build completed with status: ${currentBuild.currentResult}.\nView log details here: ${env.BUILD_URL}"
             
-             emailext (
+            // emailext (
               
-            to: 'jenkins.frameworkdemo@gmail.com',
-            subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
+            //to: 'jenkins.frameworkdemo@gmail.com',
+            //subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            //body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
             
         
-            )
+            //)
             
         }
         

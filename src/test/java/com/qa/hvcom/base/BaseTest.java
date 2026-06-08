@@ -43,11 +43,11 @@ public class BaseTest {
 		
 	}
 	@AfterTest  // run this code after every test
-	public void tearDown() {
+	public void tearDown() throws InterruptedException {
 		
 		
-	//	System.out.println("Sending Email");
-	//	homepage.SendReportInEmail2();
+		System.out.println("Sending Email");
+		homepage.SendReportInEmail2();
 		
 		
 		//___________________________________________________________________________________-

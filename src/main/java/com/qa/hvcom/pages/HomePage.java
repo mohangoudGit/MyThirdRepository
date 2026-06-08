@@ -1,6 +1,8 @@
 package com.qa.hvcom.pages;
 
 import java.sql.Driver;
+
+
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -33,6 +35,14 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+
+
 
 public class HomePage {
 	
@@ -248,7 +258,7 @@ public  int SendReportInEmail() {
 
 
 @SuppressWarnings("static-access")
-public  int SendReportInEmail2() {
+public  int SendReportInEmail2() throws InterruptedException {
 	
 	
 	
@@ -309,13 +319,15 @@ public  int SendReportInEmail2() {
     //   String filePath = "C:/Users/mgoud/MohanWorkData/SeleniumWorkSpace/SeleniumFrameWorkDemo/target/surefire-reports/emailable-report.html";
       
        
+       System.out.println("Wait Until Report Is Generated");
+       Thread.sleep(60000);
        XLSXfilePath=System.getProperty("user.dir")+"\\target\\surefire-reports\\emailable-report.html";
           // Provide your local file path
         File file = new File(XLSXfilePath);
     //    C:\Users\mgoud\MohanWorkData\SeleniumWorkSpace\SeleniumFrameWorkDemo\SeleniumFrameWorkDemo\target\surefire-reports\emailable-report.html 
 
         System.out.println("FilePath="+XLSXfilePath);
-        
+     //   C:\Users\mgoud\MohanWorkData\SeleniumWorkSpace\SeleniumFrameWorkDemo\test-output 
      // Attach the file directly using the updated API
         attachmentBodyPart.attachFile(file);
         
@@ -363,9 +375,20 @@ public  int SendReportInEmail2() {
 	
 	
 	
-	
-	
-	
 }
+
+
+public void refreshEclipeProject() throws CoreException, InterruptedException {
+	
+	
+	IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject("SeleniumFrameWorkDemo");
+
+	if (project.exists() && project.isOpen()) {
+	    // DEPTH_INFINITE crawls all sub-directories recursively
+	    project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+	}
+	Thread.sleep(10000);
+}
+
 }
 

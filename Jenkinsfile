@@ -61,9 +61,6 @@ pipeline {
             echo("deploy to Stage")
             echo("The current workspace is: ${env.WORKSPACE}")
             
-	def filePath = "large_output.txt"
-	def logMessage = "System entry logged at " + new Date().toString()
-	new File(filePath).withWriter('UTF-8') { writer ->writer.writeLine(logMessage)
 	
 	
 	}

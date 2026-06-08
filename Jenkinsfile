@@ -89,7 +89,7 @@ pipeline {
          }
       }
       
-      node {
+      
     stage('Send Email') {
         script {
             // Groovy mail code here
@@ -128,14 +128,7 @@ println("Email sent successfully!")
             // Groovy mail code here - end
         }
       }
-    }
-      
-      
-      
-      
-      
-      
-      
+    
       
       
   } 

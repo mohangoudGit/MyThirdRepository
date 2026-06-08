@@ -7,9 +7,7 @@ pipeline {
    }
    
    stages {
-   
-   
-   
+    
       stage("Build") {
          steps {
             echo("Building is done")
@@ -110,10 +108,8 @@ pipeline {
             )
             
         }
-        
- 
-}
-
+  
+  }
 
 }
 

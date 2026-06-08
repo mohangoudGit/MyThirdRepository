@@ -1,5 +1,3 @@
-import jakarta.mail.*
-import jakarta.mail.internet.*
 
 pipeline {
    agent any
@@ -9,6 +7,9 @@ pipeline {
    }
    
    stages {
+   
+   
+   
       stage("Build") {
          steps {
             echo("Building is done")
@@ -65,8 +66,8 @@ pipeline {
             echo("The current workspace is: ${env.WORKSPACE}")
           
 	
-	}
-         }
+	          }
+        }
       
       
    //   stage('Sanity Automation Test') {
@@ -110,22 +111,10 @@ pipeline {
             
         }
         
-        
-    
-    
-    
-   }
-   
-   
-   
-   
-
-
-
-
-
-
+ 
+}
 
 
 }
+
 }

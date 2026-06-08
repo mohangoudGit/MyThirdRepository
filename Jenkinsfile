@@ -86,6 +86,55 @@ pipeline {
          }
       }
       
+      node {
+    stage('Send Email') {
+        script {
+            // Groovy mail code here
+            
+            import jakarta.mail.*
+import jakarta.mail.internet.*
+
+def props = new Properties()
+props.put("mail.smtp.host", "smtp.gmail.com")
+props.put("mail.smtp.port", "587")
+props.put("mail.smtp.auth", "true")
+props.put("mail.smtp.starttls.enable", "true")
+
+def session = Session.getInstance(props,
+    new Authenticator() {
+        protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(
+                "jenkins.frameworkdemo@gmail.com",
+                "wxirehjhfyugpibr"
+            )
+        }
+    })
+
+def message = new MimeMessage(session)
+message.setFrom(new InternetAddress("jenkins.frameworkdemo@gmail.com"))
+message.setRecipients(
+    Message.RecipientType.TO,
+    InternetAddress.parse("jenkins.frameworkdemo@gmail.com")
+)
+message.setSubject("Jenkins Build Status")
+message.setText("Build completed successfully.")
+
+Transport.send(message)
+
+println("Email sent successfully!")
+            
+            
+            // Groovy mail code here - end
+        }
+      }
+    }
+      
+      
+      
+      
+      
+      
+      
       
       
   } 
@@ -99,9 +148,9 @@ pipeline {
             
              emailext (
               
-            to: 'jenkins.frameworkdemo@gmail.com',
-            subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-            body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
+         //   to: 'jenkins.frameworkdemo@gmail.com',
+          //  subject: "Build ${currentBuild.currentResult}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+           // body: """Status: ${currentBuild.currentResult}Check console output here: ${env.BUILD_URL}""",
             
         
             )

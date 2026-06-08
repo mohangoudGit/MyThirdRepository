@@ -60,12 +60,11 @@ pipeline {
          steps {
             echo("deploy to Stage")
             echo("The current workspace is: ${env.WORKSPACE}")
-            
-	
+          
 	
 	}
          }
-      }
+      
       
    //   stage('Sanity Automation Test') {
      //    steps {
@@ -87,8 +86,7 @@ pipeline {
          }
       }
       
-     
-     
+      
       
   } 
     
@@ -111,13 +109,7 @@ pipeline {
         }
         
         
-   
-   
-   
-   
-  
- 
-  
+    
     
     
    }

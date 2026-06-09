@@ -30,7 +30,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-
+*.json
 ##############################
 ## IntelliJ
 ##############################
@@ -60,5 +60,4 @@ local.properties
 ## OS X
 ##############################
 .DS_Store
-# Exception: Do NOT ignore emailable-report.html
-!emailable-report.html
+

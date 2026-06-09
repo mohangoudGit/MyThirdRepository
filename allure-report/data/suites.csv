@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Verifying Solutions Tab","285","goToSolutionsTest","Suite","2026-06-09","passed","2026-06-09","com.qa.hvcom.tests.HomePageTest","Test","com.qa.hvcom.tests.HomePageTest","goToSolutionsTest"
+"Verifying Product Tab","5894","HomePageTitletest","Suite","2026-06-09","passed","2026-06-09","com.qa.hvcom.tests.HomePageTest","Test","com.qa.hvcom.tests.HomePageTest","HomePageTitletest"
+"Verifying Partners Tab","15851","goToPartnersTest","Suite","2026-06-09","passed","2026-06-09","com.qa.hvcom.tests.HomePageTest","Test","com.qa.hvcom.tests.HomePageTest","goToPartnersTest"
+"","1","SentGmail","Suite","2026-06-09","passed","2026-06-09","com.qa.hvcom.tests.HomePageTest","Test","com.qa.hvcom.tests.HomePageTest","SentGmail"
+"Verifying Services Tab","10828","goToServicesTest","Suite","2026-06-09","passed","2026-06-09","com.qa.hvcom.tests.HomePageTest","Test","com.qa.hvcom.tests.HomePageTest","goToServicesTest"
